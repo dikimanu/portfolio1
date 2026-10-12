@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Satyabrata Pal | Cyber Security</title>
+  <meta name="description" content="Portfolio of Satyabrata Pal, B.Tech CSE student in Cyber Security. Projects, skills and certificates.">
+  <link rel="icon" href="assets/icons/sp.svg" type="image/svg+xml">
+
+  
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+
+  <!-- Boot loader -->
+  <div id="boot" role="status" aria-live="polite">
+    <button id="skip" type="button">Skip intro</button>
+    <div class="term mono">
+      <div id="lines"></div>
+      <div class="bar"><i id="fill"></i></div>
+    </div>
+  </div>
+
+  <!-- Background layers -->
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+  <div id="orb" aria-hidden="true"></div>
+
+  <!-- Custom cursor -->
+  <div class="cd"></div>
+  <div class="cr"></div>
+
+  <!-- Navbar -->
+  <nav class="nav" aria-label="Main">
+    <a class="brand mono" href="#top" aria-label="Home"><img src="assets/icons/sp.svg" alt="SP"></a>
+    <ul>
+      <li><a href="#top">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="top">
+    <div class="status mono"><b></b><img class="ico" src="assets/icons/shield.svg" alt="">B.Tech CSE &middot; Cyber Security</div>
+
+    <h1 id="name" aria-label="Satyabrata Pal">
+      <span class="row" data-t="Satyabrata">Satyabrata</span>
+      <span class="row" data-t="Pal">Pal</span>
+    </h1>
+
+    <p class="tag">Doing work for <em>passion</em>, not for greed of results.</p>
+    <div class="role mono" id="role" aria-hidden="true"></div>
+
+    <div class="cta">
+      <a class="btn p" href="#projects"><img class="ico" src="assets/icons/folder.svg" alt="">View projects</a>
+      <a class="btn" href="assets/resume/resume.pdf" download><img class="ico" src="assets/icons/download.svg" alt="">Download resume</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section" id="about">
+      <h2 class="sec-title"><img class="ico" src="assets/icons/user.svg" alt="">About me</h2>
+
+      <div class="bento">
+
+        <!-- Photo (put your picture at assets/images/photo.jpg) -->
+        <div class="tile t-photo">
+          <span class="initials" aria-hidden="true">SP</span>
+          <img src="assets/images/photo.png" alt="Satyabrata Pal" onerror="this.remove()">
+        </div>
+
+        <!-- Bio -->
+        <div class="tile t-bio">
+          <h3><img class="ico" src="assets/icons/user.svg" alt="">Hi, I'm Satyabrata</h3>
+          <p>CSE Cyber Security student who learns by building. I make tools that detect attacks and expose weak spots before someone else finds them.</p>
+          <p>Right now I'm going deeper into ethical hacking, networking and AI for security, and I'm looking for opportunities where I can keep learning and contribute.</p>
+        </div>
+
+        <!-- Stats -->
+        <div class="tile t-stats">
+          <div><img class="ico" src="assets/icons/folder.svg" alt=""><b class="count" data-to="5">0</b><span>Projects</span></div>
+          <div><img class="ico" src="assets/icons/award.svg" alt=""><b class="count" data-to="7">0</b><span>Certificates</span></div>
+          <div><img class="ico" src="assets/icons/graduation-cap.svg" alt=""><b class="count" data-to="3">0</b><span>Years of study</span></div>
+        </div>
+
+        <!-- Currently learning -->
+        <div class="tile t-learn">
+          <h3><i class="live"></i>Currently learning</h3>
+          <ul>
+            <li>Operating Systems</li>
+            <li>DBMS</li>
+            <li>Computer Networks</li>
+            <li>Ethical Hacking basics</li>
+            <li>AI &amp; Machine Learning</li>
+          </ul>
+        </div>
+
+        <!-- Tech stack -->
+        <div class="tile t-stack">
+          <h3><img class="ico" src="assets/icons/code.svg" alt="">Tech stack</h3>
+          <div class="chips">
+            <span><img class="ico" src="assets/icons/python.svg" alt="">Python</span>
+            <span><img class="ico" src="assets/icons/c.svg" alt="">C</span>
+            <span><img class="ico" src="assets/icons/database.svg" alt="">SQL</span>
+            <span><img class="ico" src="assets/icons/linux.svg" alt="">Linux</span>
+            <span><img class="ico" src="assets/icons/git.svg" alt="">Git &amp; GitHub</span>
+            <span><img class="ico" src="assets/icons/brain.svg" alt="">Machine Learning</span>
+            <span><img class="ico" src="assets/icons/network.svg" alt="">Networking</span>
+            <span><img class="ico" src="assets/icons/sparkles.svg" alt="">AI Models and Assistants</span>
+          </div>
+        </div>
+
+        <!-- Mini terminal -->
+        <div class="tile t-term mono">
+          <div class="term-top"><i></i><i></i><i></i><span><img class="ico" src="assets/icons/terminal.svg" alt="">visitor@portfolio</span></div>
+          <div class="term-out" id="termOut" aria-live="polite"></div>
+          <label class="term-row">
+            <span>$</span>
+            <input id="termIn" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal command" placeholder="type 'help' and press Enter">
+          </label>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section class="section" id="skills">
+      <h2 class="sec-title"><img class="ico" src="assets/icons/radar.svg" alt="">Skills</h2>
+
+      <div class="skills">
+        <div class="radar-wrap">
+          <svg id="radar" viewBox="0 0 400 400" role="img" aria-label="Radar chart of skill levels"></svg>
+        </div>
+
+        <div class="skill-panel">
+          <div class="tabs" id="skillTabs" role="tablist" aria-label="Skill categories"></div>
+          <ul class="skill-list" id="skillList"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <!-- To add a project: copy one whole PROJECT BLOCK, paste it after the last one,
+         then edit the image name, text and links. Delete the live-demo link line if you have none. -->
+    <section class="section" id="projects">
+      <h2 class="sec-title">Projects</h2>
+      <div class="proj-grid" id="projGrid">
+
+      <!-- ===== PROJECT - PASSWORD: copy from here ... -->
+      <article class="card" tabindex="0" role="button" aria-label="Open case study: AI Password Attack Detector and Protector">
+        <div class="card-shot"><img src="assets/images/password.png" alt="AI Password Attack Detector and Protector screenshot" loading="lazy"></div>
+        <div class="card-main">
+          <span class="card-tag mono">AI in CS project</span>
+          <h3>AI Password Attack Detector and Protector</h3>
+          <p class="card-sum">An AI-based system that detects password attacks and protects the account by raising the response as the risk grows.</p>
+          <div class="chips"><span>Python</span><span>Machine Learning</span><span>Cyber Security</span></div>
+          <span class="card-more">View case study</span>
+        </div>
+        <!-- text shown in the case-study window -->
+        <div class="card-detail" hidden>
+          <p data-sec="The problem">Passwords are still the weakest point of most systems. Attackers use brute force and password guessing, and a plain login form cannot tell a real user from an automated attack.</p>
+          <p data-sec="What I built">I built a system that watches login behaviour, uses AI to spot the patterns of a password attack, and protects the account by reacting to the risk level.</p>
+          <ul data-sec="Key features">
+          <li>AI-based detection of password attacks</li>
+          <li>Security protection that reacts to the detected risk</li>
+          <li>Built with Python and machine learning</li>
+          </ul>
+        <a class="d-link" href="https://github.com/dikimanu/password">View on GitHub</a>
+        <a class="d-link" href="https://password-fq5d.onrender.com">Open live</a>
+        </div>
+      </article>
+      <!-- ... to here (paste the copy right after this line) ===== -->
+
+      <!-- ===== PROJECT PORTSCANNER: copy from here ... -->
+      <article class="card" tabindex="0" role="button" aria-label="Open case study: PortScanner">
+        <div class="card-shot"><img src="assets/images/portscanner.png" alt="PortScanner screenshot" loading="lazy"></div>
+        <div class="card-main">
+          <span class="card-tag mono">Networking Project</span>
+          <h3>PortScanner</h3>
+          <p class="card-sum">A network port scanner that scans the ports of a host on your local network.</p>
+          <div class="chips"><span>Python</span><span>Networking</span></div>
+          <span class="card-more">View case study</span>
+        </div>
+        <!-- text shown in the case-study window -->
+        <div class="card-detail" hidden>
+          <p data-sec="The problem">Open ports show which services a machine exposes, and unnecessary open ports are an easy way in for attackers. You need to see them before someone else does.</p>
+          <p data-sec="What I built">I built a scanner that checks the ports of a host on the local network and reports which ones are open.</p>
+          <ul data-sec="Key features">
+          <li>Scans ports on localhost and the local network</li>
+          <li>Reports which ports are open</li>
+          <li>Helps understand how network services are exposed</li>
+          </ul>
+        <a class="d-link" href="https://github.com/dikimanu/portScanner">View on GitHub</a>
+        </div>
+      </article>
+      <!-- ... to here (paste the copy right after this line) ===== -->
+
+  <!-- ===== PROJECT FOODDELIVERY: copy from here ... -->
+      <article class="card" tabindex="0" role="button" aria-label="Open case study: Food Delivery App">
+        <div class="card-shot"><img src="assets/images/3disland.png" alt="3disland screenshot" loading="lazy"></div>
+        <div class="card-main">
+          <span class="card-tag mono">React three fibre project</span>
+          <h3>Island Portfolio</h3>
+          <p class="card-sum">A react three fibre project of portfolio.</p>
+          <div class="chips"><span>3d models</span><span>react js</span><span>three js</span></div>
+          <span class="card-more">View case study</span>
+        </div>
+        <!-- text shown in the case-study window -->
+        <div class="card-detail" hidden>
+          <p data-sec="visual">Unique island portfolio for fun</p>
+          <p data-sec="What I built">I have made a 3d portfolio where projects and about sections are seperated. The contact page is boom.</p>
+          <ul data-sec="Key features">
+          <li>Made with 3D models</li>
+          <li>Listed 3D skills with material</li>
+          <li>Made with react three fibre</li>
+          </ul>
+        <a class="d-link" href="https://github.com/dikimanu/island-portfolio">View on GitHub</a>
+        <a class="d-link" href="https://island-portfolio-delta.vercel.app">Open Live</a>
+        </div>
+      </article>
+      <!-- ... to here (paste the copy right after this line) ===== -->
+
+
+      <!-- ===== PROJECT FOODDELIVERY: copy from here ... -->
+      <article class="card" tabindex="0" role="button" aria-label="Open case study: Food Delivery App">
+        <div class="card-shot"><img src="assets/images/food.png" alt="Food Delivery App screenshot" loading="lazy"></div>
+        <div class="card-main">
+          <span class="card-tag mono">Full Stack Project</span>
+          <h3>Food Delivery App</h3>
+          <p class="card-sum">A MERN stack web app where users browse food, add it to a cart and place orders online.</p>
+          <div class="chips"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span></div>
+          <span class="card-more">View case study</span>
+        </div>
+        <!-- text shown in the case-study window -->
+        <div class="card-detail" hidden>
+          <p data-sec="The problem">Ordering food by phone or from scattered menus is slow and easy to get wrong. People want one place to see the menu, pick items and order.</p>
+          <p data-sec="What I built">I built a full stack food delivery app with a React front end and a Node and Express back end, storing data in MongoDB.</p>
+          <ul data-sec="Key features">
+          <li>Browse the food menu</li>
+          <li>Add items to a cart and place an order</li>
+          <li>Full stack MERN architecture</li>
+          </ul>
+        <a class="d-link" href="https://github.com/dikimanu/food-delivery">View on GitHub</a>
+        <a class="d-link" href="https://food-delivery-sable-one.vercel.app">Open Live</a>
+        </div>
+      </article>
+      <!-- ... to here (paste the copy right after this line) ===== -->
+
+      <!-- ===== PROJECT ENCRYPTIONDECRYPTION: copy from here ... -->
+      <article class="card" tabindex="0" role="button" aria-label="Open case study: File Encryption & Decryption">
+        <div class="card-shot"><img src="assets/images/encryption.png" alt="File Encryption & Decryption screenshot" loading="lazy"></div>
+        <div class="card-main">
+          <span class="card-tag mono">Cryptography Project</span>
+          <h3>File Encryption & Decryption</h3>
+          <p class="card-sum">A tool that encrypts and decrypts files with AES-GCM authenticated encryption.</p>
+          <div class="chips"><span>AES-GCM</span><span>Cryptography</span></div>
+          <span class="card-more">View case study</span>
+        </div>
+        <!-- text shown in the case-study window -->
+        <div class="card-detail" hidden>
+          <p data-sec="The problem">Files that are stored or shared without protection can be read by anyone who gets them, and plain encryption does not tell you if the data was changed.</p>
+          <p data-sec="What I built">I built a tool that encrypts files with AES-GCM and decrypts them again with the right key. GCM also detects if the encrypted data was tampered with.</p>
+          <ul data-sec="Key features">
+          <li>Encrypts files with AES-GCM</li>
+          <li>Decrypts files with the correct key</li>
+          <li>Detects tampering of encrypted data</li>
+          </ul>
+                  <a class="d-link" href="https://github.com/dikimanu/file-enc-dec">View on GitHub</a>
+        <a class="d-link" href="https://file-enc-dec.vercel.app">Open Live</a>
+        </div>
+      </article>
+      <!-- ... to here (paste the copy right after this line) ===== -->
+
+      <!-- ===== PROJECT SOCIALAPP: copy from here ... -->
+      <article class="card" tabindex="0" role="button" aria-label="Open case study: Social Media App">
+        <div class="card-shot"><img src="assets/images/social.png" alt="Social Media App screenshot" loading="lazy"></div>
+        <div class="card-main">
+          <span class="card-tag mono">Full Stack Project</span>
+          <h3>Social Media App</h3>
+          <p class="card-sum">A MERN stack social media web app where users can sign up, post and interact with others.</p>
+          <div class="chips"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span></div>
+          <span class="card-more">View case study</span>
+        </div>
+        <!-- text shown in the case-study window -->
+        <div class="card-detail" hidden>
+          <p data-sec="The problem">Learning how a social platform really works means building the pieces together: accounts, posts and interaction between users.</p>
+          <p data-sec="What I built">I built a full stack social media app with a React front end and a Node and Express back end, storing data in MongoDB.</p>
+          <ul data-sec="Key features">
+          <li>User accounts and login</li>
+          <li>Create and view posts</li>
+          <li>Full stack MERN architecture</li>
+          </ul>
+        <a class="d-link" href="https://github.com/dikimanu/social-media">View on GitHub</a>
+        <a class="d-link" href="https://social-media-web-eta.vercel.app">Open Live</a>
+        </div>
+      </article>
+      <!-- ... to here (paste the copy right after this line) ===== -->
+
+
+       <!-- ===== PROJECT SNAKEGAME: copy from here ... -->
+      <article class="card" tabindex="0" role="button" aria-label="Open case study: Social Media App">
+        <div class="card-shot"><img src="assets/images/snake game.png" alt="snake game screenshot" loading="lazy"></div>
+        <div class="card-main">
+          <span class="card-tag mono">HTML CSS JS</span>
+          <h3>Snake Mania - JS Game</h3>
+          <p class="card-sum">A MERN stack social media web app where users can sign up, post and interact with others.</p>
+          <div class="chips"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span></div>
+          <span class="card-more">View case study</span>
+        </div>
+        <!-- text shown in the case-study window -->
+        <div class="card-detail" hidden>
+          <p data-sec="The problem">Learning how a social platform really works means building the pieces together: accounts, posts and interaction between users.</p>
+          <p data-sec="What I built">I built a full stack social media app with a React front end and a Node and Express back end, storing data in MongoDB.</p>
+          <ul data-sec="Key features">
+          <li>User accounts and login</li>
+          <li>Create and view posts</li>
+          <li>Full stack MERN architecture</li>
+          </ul>
+        <a class="d-link" href="https://github.com/dikimanu/javascript-projects/tree/main/snake-game">View on GitHub</a>
+        <a class="d-link" href="https://snake-mania-black.vercel.app">Open Live</a>
+        </div>
+      </article>
+      <!-- ... to here (paste the copy right after this line) ===== -->
+
+      </div>
+
+      <dialog class="modal" id="projModal" aria-labelledby="pmTitle">
+        <button class="pm-close" id="pmClose" type="button" aria-label="Close case study">&times;</button>
+        <div class="pm-inner" id="pmBody"></div>
+      </dialog>
+    </section>
+
+    <!-- ================= CERTIFICATES ================= -->
+    <section class="section" id="certificates">
+      <h2 class="sec-title"><img class="ico" src="assets/icons/award.svg" alt="">Certificates</h2>
+      <!-- To add a certificate: copy one whole CERTIFICATE BLOCK, paste it after the last one,
+           then change the image file name, the title and the hidden detail text.
+           cert-title  = short title shown on the card and in the viewer.
+           cert-detail = hidden text shown under the image in the viewer.
+                         Each <span data-sec="Heading">text</span> becomes a heading + paragraph.
+                         Add or remove lines as you like. -->
+      <div class="cert-grid" id="certGrid">
+
+        <!-- ===== CERTIFICATE BLOCK: copy from here ... -->
+        <button class="cert" type="button">
+          <img class="cert-img" src="assets/images/globalsecora.jpg" alt="Certificate 1" loading="lazy">
+          <span class="cert-title">Globalsecora Certificate</span>
+          <span class="cert-zoom"><img class="ico" src="assets/icons/external-link.svg" alt=""></span>
+          <!-- text shown in the certificate viewer -->
+          <span class="cert-detail" hidden>
+            <span data-sec="Issued by">Globalsecora</span>
+            <span data-sec="What I learned">Write here...</span>
+          </span>
+        </button>
+        <!-- ... to here ===== -->
+
+        <!-- ===== CERTIFICATE BLOCK: copy from here ... -->
+        <button class="cert" type="button">
+          <img class="cert-img" src="assets/images/aws badge.jpg" alt="Certificate 2" loading="lazy">
+          <span class="cert-title">AWS Badge</span>
+          <span class="cert-zoom"><img class="ico" src="assets/icons/external-link.svg" alt=""></span>
+          <!-- text shown in the certificate viewer -->
+          <span class="cert-detail" hidden>
+            <span data-sec="Issued by">Amazon Web Services</span>
+            <span data-sec="What I learned">Write here...</span>
+          </span>
+        </button>
+        <!-- ... to here ===== -->
+
+        <!-- ===== CERTIFICATE BLOCK: copy from here ... -->
+        <button class="cert" type="button">
+          <img class="cert-img" src="assets/images/ai-labs-excel.jpg" alt="Certificate 3" loading="lazy">
+          <span class="cert-title">Advanced Excel for Manufacturing Growth</span>
+          <span class="cert-zoom"><img class="ico" src="assets/icons/external-link.svg" alt=""></span>
+          <!-- text shown in the certificate viewer -->
+          <span class="cert-detail" hidden>
+            <span data-sec="Issued by">AI Labs (Workshop)</span>
+            <span data-sec="What I learned">Advanced Excel formulas, pivot tables, and data automation.</span>
+            <span data-sec="Highlights">Explored KPI-based dashboards for manufacturing-related analytics.</span>
+          </span>
+        </button>
+        <!-- ... to here ===== -->
+
+        <!-- ===== CERTIFICATE BLOCK: copy from here ... -->
+        <button class="cert" type="button">
+          <img class="cert-img" src="assets/images/ai-labs-linux-c-dsa.jpg" alt="Certificate 4" loading="lazy">
+          <span class="cert-title">Linux, C and DSA</span>
+          <span class="cert-zoom"><img class="ico" src="assets/icons/external-link.svg" alt=""></span>
+          <!-- text shown in the certificate viewer -->
+          <span class="cert-detail" hidden>
+            <span data-sec="Issued by">AI Labs</span>
+            <span data-sec="What I learned">Write here...</span>
+          </span>
+        </button>
+        <!-- ... to here ===== -->
+
+        <!-- ===== CERTIFICATE BLOCK: copy from here ... -->
+        <button class="cert" type="button">
+          <img class="cert-img" src="assets/images/infosys-blockchain.jpg" alt="Certificate 5" loading="lazy">
+          <span class="cert-title">Blockchain</span>
+          <span class="cert-zoom"><img class="ico" src="assets/icons/external-link.svg" alt=""></span>
+          <!-- text shown in the certificate viewer -->
+          <span class="cert-detail" hidden>
+            <span data-sec="Issued by">Infosys</span>
+            <span data-sec="What I learned">Write here...</span>
+          </span>
+        </button>
+        <!-- ... to here ===== -->
+
+        <!-- ===== CERTIFICATE BLOCK: copy from here ... -->
+        <button class="cert" type="button">
+          <img class="cert-img" src="assets/images/cloud practitioner.jpg" alt="Certificate 6" loading="lazy">
+          <span class="cert-title">Cloud Practitioner</span>
+          <span class="cert-zoom"><img class="ico" src="assets/icons/external-link.svg" alt=""></span>
+          <!-- text shown in the certificate viewer -->
+          <span class="cert-detail" hidden>
+            <span data-sec="Issued by">Amazon Web Services</span>
+            <span data-sec="What I learned">Write here...</span>
+          </span>
+        </button>
+        <!-- ... to here ===== -->
+
+        <!-- ===== CERTIFICATE BLOCK: copy from here ... -->
+        <button class="cert" type="button">
+          <img class="cert-img" src="assets/images/webel-linux.jpg" alt="Certificate 7" loading="lazy">
+          <span class="cert-title">Linux</span>
+          <span class="cert-zoom"><img class="ico" src="assets/icons/external-link.svg" alt=""></span>
+          <!-- text shown in the certificate viewer -->
+          <span class="cert-detail" hidden>
+            <span data-sec="Issued by">WEBEL</span>
+            <span data-sec="What I learned">Write here...</span>
+          </span>
+        </button>
+        <!-- ... to here ===== -->
+
+      </div>
+
+      <dialog class="viewer" id="certViewer" aria-label="Certificate viewer">
+        <div class="vw-stage">
+          <button class="vw-btn vw-close" id="vwClose" type="button" aria-label="Close viewer"><img class="ico" src="assets/icons/close.svg" alt=""></button>
+          <button class="vw-btn vw-prev" id="vwPrev" type="button" aria-label="Previous certificate"><img class="ico" src="assets/icons/arrow-right.svg" alt=""></button>
+          <img class="vw-img" id="vwImg" src="" alt="">
+          <button class="vw-btn vw-next" id="vwNext" type="button" aria-label="Next certificate"><img class="ico" src="assets/icons/arrow-right.svg" alt=""></button>
+        </div>
+        <div class="vw-bar mono">
+          <span class="vw-title" id="vwTitle"></span>
+          <span id="vwCount"></span>
+        </div>
+        <!-- hidden certificate text appears here (filled by main.js) -->
+        <div class="vw-detail" id="vwDetail"></div>
+      </dialog>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="section" id="contact">
+      <h2 class="sec-title"><img class="ico" src="assets/icons/mail.svg" alt="">Contact</h2>
+
+      <div class="contact">
+        <div class="ct-info">
+          <p class="ct-lead">Have an opportunity, a project idea, or a security question? Send it through the secure channel.</p>
+          <ul class="ct-links" id="ctLinks"></ul>
+        </div>
+
+        <form class="ct-form" id="ctForm">
+          <label class="ct-field">
+            <span class="mono"><img class="ico" src="assets/icons/user.svg" alt="">Name</span>
+            <input name="name" type="text" required maxlength="80" autocomplete="name">
+          </label>
+          <label class="ct-field">
+            <span class="mono"><img class="ico" src="assets/icons/mail.svg" alt="">Email</span>
+            <input name="email" type="email" required maxlength="120" autocomplete="email">
+          </label>
+          <label class="ct-field">
+            <span class="mono"><img class="ico" src="assets/icons/send.svg" alt="">Message</span>
+            <textarea name="message" rows="5" required maxlength="1000"></textarea>
+          </label>
+
+          <!-- spam trap: real visitors never see or fill this -->
+          <input class="ct-trap" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <button class="ct-btn" id="ctBtn" type="submit"><img class="ico" src="assets/icons/lock.svg" alt="">Encrypt &amp; send</button>
+
+          <div class="ct-term mono" id="ctTerm" hidden>
+            <div id="ctLog"></div>
+            <div class="ct-cipher" id="ctCipher"></div>
+          </div>
+          <p class="ct-status" id="ctStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <span class="mono">&copy; <span id="year"></span> Satyabrata Pal</span>
+
+    <div class="foot-social">
+      <a href="https://github.com/dikimanu" target="_blank" rel="noopener" aria-label="GitHub"><img class="ico" src="assets/icons/github.svg" alt=""></a>
+      <a href="https://www.linkedin.com/in/satyabrata-pal-03b5a7373" target="_blank" rel="noopener" aria-label="LinkedIn"><img class="ico" src="assets/icons/linkedin.svg" alt=""></a>
+      <a href="https://www.instagram.com/_satyabrata.pal" target="_blank" rel="noopener" aria-label="Instagram"><img class="ico" src="assets/icons/instagram.svg" alt=""></a>
+      <a href="mailto:satyabratapal50@gmail.com" aria-label="Email"><img class="ico" src="assets/icons/mail.svg" alt=""></a>
+    </div>
+
+    <a class="mono" href="#top"><img class="ico" src="assets/icons/arrow-up.svg" alt="">Back to top</a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/background.js"></script>
+  <script src="js/orb.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

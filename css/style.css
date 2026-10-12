@@ -1,0 +1,449 @@
+/* ================= Variables & base ================= */
+:root {
+  /* space palette */
+  --bg: #02030a;
+  --ink: #eef3ff;
+  --mute: #93a1c4;
+  --cyan: #6fd3ff;        /* ice blue  (name kept so other files still work) */
+  --violet: #8f7bff;
+  --magenta: #ff8fc7;     /* soft rose */
+  --gold: #e9c987;        /* used for certificates */
+  --line: rgba(160, 180, 230, .18);
+
+  /* main brand gradient: ice blue -> violet -> rose */
+  --grad: linear-gradient(100deg, #9ad8ff 0%, #8f7bff 55%, #ff8fc7 100%);
+
+  /* one font per section (loaded in index.html) */
+  --f-about:   'Fraunces', Georgia, serif;
+  --f-skills:  'Sora', system-ui, sans-serif;
+  --f-proj:    'Bricolage Grotesque', system-ui, sans-serif;
+  --f-cert:    'Cormorant Garamond', Georgia, serif;
+  --f-contact: 'Manrope', system-ui, sans-serif;
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*, *::before, *::after { box-sizing: inherit; }
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Manrope', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
+
+/* ================= Icons (files in assets/icons/) ================= */
+.ico {
+  width: 1.1em;
+  height: 1.1em;
+  flex: none;
+  display: inline-block;
+  vertical-align: -.18em;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* ================= Boot loader ================= */
+#boot {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #02030a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  transition: opacity .7s ease, visibility .7s;
+}
+#boot.done { opacity: 0; visibility: hidden; }
+
+.term {
+  width: min(640px, 100%);
+  font-size: clamp(12px, 2.6vw, 15px);
+  line-height: 1.9;
+  color: var(--mute);
+}
+.term .ok { color: var(--cyan); }
+.term .grant {
+  color: #9ad8ff;
+  font-size: 1.25em;
+  letter-spacing: .08em;
+  margin-top: 10px;
+  display: block;
+}
+
+.bar { height: 2px; background: var(--line); margin-top: 18px; overflow: hidden; }
+.bar i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--grad);
+}
+
+#skip {
+  position: absolute;
+  right: 20px;
+  top: calc(16px + env(safe-area-inset-top, 0px));
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--mute);
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+}
+#skip:hover, #skip:focus-visible { color: var(--ink); border-color: var(--cyan); outline: none; }
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ================= Background layers ================= */
+#bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* soft nebula glows behind everything */
+.glow {
+  position: fixed;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: .22;
+  z-index: 0;
+  pointer-events: none;
+}
+.g1 { left: -28vmax; top: -30vmax; background: #3b3fd8; }
+.g2 { right: -30vmax; bottom: -32vmax; background: #1d6fd6; opacity: .2; }
+
+/* the Earth scene (orb.js) */
+#orb {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: min(70vw, 900px);
+  height: 100vh;
+  height: 100svh;
+  z-index: 0;
+  pointer-events: none;
+}
+@media (max-width: 820px) { #orb { width: 100%; opacity: .5; } }
+
+/* ================= Navbar (floating glass pill) ================= */
+.nav {
+  position: fixed;
+  left: clamp(10px, 3vw, 40px);
+  right: clamp(10px, 3vw, 40px);
+  top: calc(12px + env(safe-area-inset-top, 0px));
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px clamp(14px, 2.4vw, 28px);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02)), rgba(5, 8, 22, .6);
+  backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: 0 10px 40px -16px rgba(0, 0, 0, .9), inset 0 1px 0 rgba(255, 255, 255, .12);
+  opacity: 0;
+  transform: translateY(-160%);
+  transition: opacity .8s ease .9s, transform .8s cubic-bezier(.2, .8, .2, 1) .9s;
+}
+body.ready .nav { opacity: 1; transform: none; }
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-hero);
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -.02em;
+}
+.brand span { color: var(--cyan); }
+.brand img { width: 34px; height: 34px; display: block; filter: drop-shadow(0 0 10px rgba(143, 123, 255, .6)); }
+
+.nav ul {
+  display: flex;
+  gap: clamp(6px, 1.4vw, 14px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav ul a {
+  display: block;
+  color: var(--mute);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: color .2s, background .2s, box-shadow .2s;
+}
+.nav ul a:hover, .nav ul a:focus-visible {
+  color: var(--ink);
+  outline: none;
+  background: rgba(255, 255, 255, .07);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 0 22px -6px rgba(143, 123, 255, .7);
+}
+
+/* six links need less room on phones */
+@media (max-width: 760px) {
+  .nav ul { gap: 2px; }
+  .nav ul a { font-size: 13px; padding: 7px 10px; }
+}
+@media (max-width: 560px) {
+  .nav ul li:first-child { display: none; }
+}
+@media (max-width: 420px) {
+  .nav { padding-left: 10px; padding-right: 10px; }
+  .nav ul a { font-size: 12px; padding: 6px 7px; }
+  .brand img { width: 28px; height: 28px; }
+}
+
+/* ================= Hero ================= */
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(96px, 9vw, 120px) clamp(24px, 7vw, 96px) clamp(40px, 6vw, 80px);
+}
+
+/* glass chip above the name */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--ink);
+  padding: 9px 16px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  width: max-content;
+  max-width: 100%;
+  backdrop-filter: blur(10px);
+  background:
+    linear-gradient(rgba(6, 10, 26, .75), rgba(6, 10, 26, .75)) padding-box,
+    var(--grad) border-box;
+  box-shadow: 0 10px 30px -14px rgba(143, 123, 255, .7);
+}
+.status b {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #7dffc4;
+  box-shadow: 0 0 12px #7dffc4;
+  flex: none;
+}
+.status .ico { width: 16px; height: 16px; }
+
+/* the name: big gradient letters with depth, tilts with the mouse (see main.js step) */
+h1 {
+  margin: 26px 0 0;
+  font-family: var(--f-hero);
+  font-weight: 800;
+  line-height: .92;
+  letter-spacing: -.04em;
+  font-size: clamp(48px, 11vw, 150px);
+  perspective: 900px;
+}
+h1 .row {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  background: linear-gradient(100deg, #ffffff 0%, #9ad8ff 30%, #8f7bff 62%, #ff8fc7 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 6px 0 rgba(40, 30, 120, .55)) drop-shadow(0 22px 30px rgba(143, 123, 255, .35));
+  transform: rotateX(var(--hx, 0deg)) rotateY(var(--hy, 0deg));
+  transition: transform .18s ease-out;
+  animation: sheen 7s ease-in-out infinite alternate;
+}
+@keyframes sheen { to { background-position: 100% 0; } }
+
+.tag {
+  margin: 30px 0 0;
+  max-width: 34ch;
+  font-size: clamp(18px, 2.4vw, 26px);
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--mute);
+}
+.tag em {
+  font-style: normal;
+  font-weight: 700;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.role {
+  margin-top: 18px;
+  font-size: clamp(13px, 1.6vw, 16px);
+  color: var(--cyan);
+  min-height: 1.6em;
+}
+.cur-blink {
+  display: inline-block;
+  width: .55ch;
+  height: 1em;
+  background: var(--cyan);
+  vertical-align: -.12em;
+  animation: blink 1s steps(2) infinite;
+}
+
+.cta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 44px; }
+
+/* ================= 3D buttons ================= */
+/* .btn      = glass button with a gradient border and a raised edge
+   .btn.p    = solid gradient button with a glossy top and a thick 3D edge
+   Both press down when clicked and have a light sweep on hover.
+   (Pressing uses "top", because cursor.js moves buttons with transform.) */
+.btn {
+  position: relative;
+  top: 0;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--f-hero);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: .02em;
+  padding: 16px 30px;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--ink);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, 0) 55%) padding-box,
+    linear-gradient(rgba(8, 12, 30, .88), rgba(8, 12, 30, .88)) padding-box,
+    var(--grad) border-box;
+  box-shadow:
+    0 5px 0 rgba(22, 26, 70, .95),
+    0 16px 30px -12px rgba(143, 123, 255, .6),
+    inset 0 1px 0 rgba(255, 255, 255, .2);
+  transition: top .12s, box-shadow .12s, filter .2s;
+}
+.btn.p {
+  border-color: transparent;
+  color: #050816;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 52%) border-box,
+    var(--grad) border-box;
+  box-shadow:
+    0 5px 0 #3b2d9a,
+    0 18px 34px -10px rgba(143, 123, 255, .75),
+    inset 0 1px 0 rgba(255, 255, 255, .6),
+    inset 0 -3px 0 rgba(30, 20, 100, .2);
+}
+/* light sweep */
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, .38) 50%, transparent 65%);
+  transform: translateX(-130%);
+  transition: transform .7s ease;
+}
+.btn:hover::after { transform: translateX(130%); }
+.btn:hover { filter: brightness(1.12); }
+.btn:active {
+  top: 4px;
+  box-shadow: 0 1px 0 rgba(22, 26, 70, .95), 0 8px 18px -10px rgba(143, 123, 255, .6), inset 0 1px 0 rgba(255, 255, 255, .2);
+}
+.btn.p:active {
+  box-shadow: 0 1px 0 #3b2d9a, 0 8px 18px -8px rgba(143, 123, 255, .7), inset 0 1px 0 rgba(255, 255, 255, .6);
+}
+.btn .ico { width: 18px; height: 18px; }
+.btn.p .ico { filter: brightness(0); }
+.btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+
+/* Hero content appears once, after the boot sequence */
+.hero > * { opacity: 0; transform: translateY(14px); }
+body.ready .hero > * { opacity: 1; transform: none; transition: opacity .8s ease, transform .8s ease; }
+body.ready .hero > *:nth-child(2) { transition-delay: .1s; }
+body.ready .hero > *:nth-child(3) { transition-delay: .35s; }
+body.ready .hero > *:nth-child(4) { transition-delay: .5s; }
+body.ready .hero > *:nth-child(5) { transition-delay: .65s; }
+
+/* ================= Custom cursor ================= */
+.cd, .cr {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 99;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.cd {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  margin: -3px 0 0 -3px;
+  box-shadow: 0 0 12px var(--cyan), 0 0 22px var(--violet);
+}
+.cr {
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  border: 1px solid rgba(154, 216, 255, .6);
+  transition: opacity .3s, width .25s, height .25s, margin .25s, background .25s;
+}
+.cr.big { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: rgba(143, 123, 255, .14); }
+
+@media (hover: hover) and (pointer: fine) {
+  body.ready.cur-on .cd, body.ready.cur-on .cr { opacity: 1; }
+  body.ready, body.ready a, body.ready button { cursor: none; }
+}
+
+/* ================= Scroll reveal (classes are added by main.js) ================= */
+.reveal { opacity: 0; }
+.reveal.in {
+  opacity: 1;
+  animation: rise .9s cubic-bezier(.2, .8, .2, 1) both;
+  animation-delay: var(--d, 0s);
+}
+@keyframes rise {
+  from { opacity: 0; translate: 0 34px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+/* ================= Reduced motion ================= */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .hero > * { opacity: 1; transform: none; }
+}
