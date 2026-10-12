@@ -86,7 +86,7 @@ function limitRows(grid, step) {
 var TERMINAL = {
   whoami:   'Satyabrata Pal\nB.Tech CSE, Cyber Security student\n"Doing work for passion, not for greed of results."',
   skills:   'CSE Core Subjects: Operating System, DSA, DBMS, Networking\nSecurity : Basics of Ethical Hacking, Fundamentals of Cyber Security, Cryptography\nAI: Introduction to AI&ML, Data Mining and Data Visualization\nCode     : Python, C, SQL\nTools    : Linux, Git, ChatGPT, Claude, Gemini, and other AI models...',
-  projects: '1. AI Password Attack Detector and Protector\n2. PortScanner\n3. Food Delivery App (MERN stack)\n4. File Encryption & Decryption (AES-GCM)\n5. Social Media App (MERN stack)\n6. Snake Mania (JS Game)',
+  projects: '1. AI Password Attack Detector and Protector\n2. PortScanner\n3. Food Delivery App (MERN stack)\n4. File Encryption & Decryption (AES-GCM)\n5. Social Media App (MERN stack)\n6. 3d Island Portfolio\n7. Snake Mania (JS Game)',
   contact:  'email   : satyabratapal50@gmail.com\nlinkedin: linkedin.com/in/satyabrata-pal-03b5a7373'
 };
 
@@ -182,26 +182,26 @@ var SKILLS = {
   'Security': [
     ['Cyber Security Basics', 65],
     ['Ethical Hacking Basics', 50],
-    ['Cryptography', 55],
-    ['Networking', 60],
-    ['Linux', 55]
+    ['Cryptography', 54],
+    ['Networking', 50],
+    ['Linux', 65]
   ],
   'Programming': [
     ['Python', 75],
-    ['C', 60],
+    ['C', 70],
     ['SQL', 60],
     ['DSA', 55]
   ],
   'CSE Core & AI': [
-    ['Operating Systems', 60],
-    ['DBMS', 60],
-    ['AI & ML Intro', 50],
+    ['Operating Systems', 80],
+    ['DBMS', 70],
+    ['AI & ML Intro', 60],
     ['Data Mining', 45],
     ['Data Visualization', 50]
   ],
   'Tools': [
     ['Git & GitHub', 60],
-    ['AI Assistants', 80],
+    ['AI Assistants', 90],
     ['Command Line', 55]
   ]
 };
@@ -745,3 +745,67 @@ if (window.bindCursorEffects) {
   window.bindCursorEffects(document.querySelector('main'));
   window.bindCursorEffects(document.querySelector('.footer'));
 }
+
+/* ---------- Theme toggle: cold -> hot -> rock (remembered) ---------- */
+(function () {
+  var root = document.documentElement;
+  var btn  = document.getElementById('themeToggle');
+  var themes = ['cold', 'hot', 'rock'];
+
+  function get() { try { return localStorage.getItem('theme'); } catch (e) { return null; } }
+  function save(t) { try { localStorage.setItem('theme', t); } catch (e) {} }
+
+  function apply(t) {
+    root.setAttribute('data-theme', t);
+    if (btn) btn.setAttribute('aria-label', 'Theme: ' + t + '. Click to change');
+  }
+
+  var saved = get();
+  apply(themes.indexOf(saved) > -1 ? saved : 'cold');
+
+  if (btn) btn.addEventListener('click', function () {
+    var next = themes[(themes.indexOf(root.getAttribute('data-theme')) + 1) % themes.length];
+    apply(next);
+    save(next);
+  });
+})();
+
+/* ---------- Liquid ripple from the click point ---------- */
+document.addEventListener('pointerdown', function (e) {
+  var b = e.target.closest && e.target.closest('.btn, .ct-btn');
+  if (!b || b.disabled) return;
+  var r = b.getBoundingClientRect();
+  var size = Math.max(r.width, r.height) * 2;
+  var s = document.createElement('span');
+  s.className = 'ripple';
+  s.style.width = s.style.height = size + 'px';
+  s.style.left = (e.clientX - r.left - size / 2) + 'px';
+  s.style.top  = (e.clientY - r.top  - size / 2) + 'px';
+  b.appendChild(s);
+  setTimeout(function () { s.remove(); }, 700);
+});
+
+/* ---------- Background glow follows the planet you are passing ---------- */
+(function () {
+  var g1 = document.querySelector('.g1');
+  var g2 = document.querySelector('.g2');
+  var hero = document.getElementById('top');
+  var secs = document.querySelectorAll('main .section');
+  if (!g1 || !g2 || !('IntersectionObserver' in window)) return;
+
+  function tint(sec) {
+    if (!sec) { g1.style.background = ''; g2.style.background = ''; return; }
+    var cs = getComputedStyle(sec);
+    g1.style.background = 'rgb(' + cs.getPropertyValue('--b').trim() + ')';
+    g2.style.background = 'rgb(' + cs.getPropertyValue('--a').trim() + ')';
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) tint(en.target === hero ? null : en.target);
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });   // fires when a section crosses mid-screen
+
+  if (hero) io.observe(hero);
+  Array.prototype.forEach.call(secs, function (s) { io.observe(s); });
+})();

@@ -1,18 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="cold">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
   <title>Satyabrata Pal | Cyber Security</title>
   <meta name="description" content="Portfolio of Satyabrata Pal, B.Tech CSE student in Cyber Security. Projects, skills and certificates.">
   <link rel="icon" href="assets/icons/sp.svg" type="image/svg+xml">
-
-  
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/sections.css">
 </head>
 <body>
+
+  <!-- Liquid / goo filter (used by fluid buttons) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+        <feColorMatrix in="blur" mode="matrix"
+          values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"/>
+        <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+      </filter>
+    </defs>
+  </svg>
 
   <!-- Boot loader -->
   <div id="boot" role="status" aria-live="polite">
@@ -44,6 +56,10 @@
       <li><a href="#certificates">Certificates</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+        </ul>
+    <button class="theme-orb" id="themeToggle" type="button"
+            aria-label="Switch theme: cold, hot or rock" title="Theme"></button>
+  </nav>
   </nav>
 
   <!-- Hero -->
@@ -87,7 +103,7 @@
 
         <!-- Stats -->
         <div class="tile t-stats">
-          <div><img class="ico" src="assets/icons/folder.svg" alt=""><b class="count" data-to="5">0</b><span>Projects</span></div>
+          <div><img class="ico" src="assets/icons/folder.svg" alt=""><b class="count" data-to="7">0</b><span>Projects</span></div>
           <div><img class="ico" src="assets/icons/award.svg" alt=""><b class="count" data-to="7">0</b><span>Certificates</span></div>
           <div><img class="ico" src="assets/icons/graduation-cap.svg" alt=""><b class="count" data-to="3">0</b><span>Years of study</span></div>
         </div>
@@ -161,18 +177,19 @@
         <div class="card-main">
           <span class="card-tag mono">AI in CS project</span>
           <h3>AI Password Attack Detector and Protector</h3>
-          <p class="card-sum">An AI-based system that detects password attacks and protects the account by raising the response as the risk grows.</p>
-          <div class="chips"><span>Python</span><span>Machine Learning</span><span>Cyber Security</span></div>
+          <p class="card-sum">An AI-based system that detects password attacks such as brute force and guessing, and protects the account by raising its response as the risk grows.</p>
+          <div class="chips"><span>Python</span><span>Machine Learning</span><span>HTML CSS JS</span></div>
           <span class="card-more">View case study</span>
         </div>
         <!-- text shown in the case-study window -->
         <div class="card-detail" hidden>
           <p data-sec="The problem">Passwords are still the weakest point of most systems. Attackers use brute force and password guessing, and a plain login form cannot tell a real user from an automated attack.</p>
-          <p data-sec="What I built">I built a system that watches login behaviour, uses AI to spot the patterns of a password attack, and protects the account by reacting to the risk level.</p>
+          <p data-sec="What I built">I built a system that watches login behaviour, uses a machine learning model to recognise the patterns of a password attack, and protects the account by scaling its response to the risk level instead of treating every login the same.</p>
           <ul data-sec="Key features">
-          <li>AI-based detection of password attacks</li>
-          <li>Security protection that reacts to the detected risk</li>
-          <li>Built with Python and machine learning</li>
+          <li>AI-based detection of password attacks such as brute force and repeated guessing</li>
+          <li>Risk-based protection that reacts more strongly as the threat level rises</li>
+          <li>Python and machine learning backend with a web interface built in HTML, CSS and JS</li>
+          <li>Deployed online so it can be tried live</li>
           </ul>
         <a class="d-link" href="https://github.com/dikimanu/password">View on GitHub</a>
         <a class="d-link" href="https://password-fq5d.onrender.com">Open live</a>
@@ -186,42 +203,44 @@
         <div class="card-main">
           <span class="card-tag mono">Networking Project</span>
           <h3>PortScanner</h3>
-          <p class="card-sum">A network port scanner that scans the ports of a host on your local network.</p>
+          <p class="card-sum">A Python network port scanner that checks a host on your local network and reports which ports are open.</p>
           <div class="chips"><span>Python</span><span>Networking</span></div>
           <span class="card-more">View case study</span>
         </div>
         <!-- text shown in the case-study window -->
         <div class="card-detail" hidden>
           <p data-sec="The problem">Open ports show which services a machine exposes, and unnecessary open ports are an easy way in for attackers. You need to see them before someone else does.</p>
-          <p data-sec="What I built">I built a scanner that checks the ports of a host on the local network and reports which ones are open.</p>
+          <p data-sec="What I built">I built a scanner in Python that connects to the ports of a host on the local network and reports which ones are open, so you can quickly see what a machine is exposing.</p>
           <ul data-sec="Key features">
-          <li>Scans ports on localhost and the local network</li>
+          <li>Scans ports on localhost and on other hosts in the local network</li>
           <li>Reports which ports are open</li>
-          <li>Helps understand how network services are exposed</li>
+          <li>Helps understand how network services are exposed and why unused ports should be closed</li>
+          <li>Built to be used only on systems you own or have permission to test</li>
           </ul>
         <a class="d-link" href="https://github.com/dikimanu/portScanner">View on GitHub</a>
         </div>
       </article>
       <!-- ... to here (paste the copy right after this line) ===== -->
 
-  <!-- ===== PROJECT FOODDELIVERY: copy from here ... -->
-      <article class="card" tabindex="0" role="button" aria-label="Open case study: Food Delivery App">
+  <!-- ===== PROJECT ISLAND PORTFOLIO: copy from here ... -->
+      <article class="card" tabindex="0" role="button" aria-label="Open case study: Island Portfolio">
         <div class="card-shot"><img src="assets/images/3disland.png" alt="3disland screenshot" loading="lazy"></div>
         <div class="card-main">
-          <span class="card-tag mono">React three fibre project</span>
+          <span class="card-tag mono">React Three Fiber project</span>
           <h3>Island Portfolio</h3>
-          <p class="card-sum">A react three fibre project of portfolio.</p>
-          <div class="chips"><span>3d models</span><span>react js</span><span>three js</span></div>
+          <p class="card-sum">An interactive 3D portfolio built with React Three Fiber, where visitors explore a floating island to discover my work.</p>
+          <div class="chips"><span>3D models</span><span>React JS</span><span>Three.js</span></div>
           <span class="card-more">View case study</span>
         </div>
         <!-- text shown in the case-study window -->
         <div class="card-detail" hidden>
-          <p data-sec="visual">Unique island portfolio for fun</p>
-          <p data-sec="What I built">I have made a 3d portfolio where projects and about sections are seperated. The contact page is boom.</p>
+          <p data-sec="The idea">A portfolio does not have to be a flat page. I wanted to build something playful and memorable that shows my work inside a 3D world.</p>
+          <p data-sec="What I built">I built a 3D island portfolio in which the projects and about sections are kept in separate areas of the scene. It ends with a creative contact page that makes getting in touch part of the experience.</p>
           <ul data-sec="Key features">
-          <li>Made with 3D models</li>
-          <li>Listed 3D skills with material</li>
-          <li>Made with react three fibre</li>
+          <li>Built with 3D models in a real-time scene</li>
+          <li>Skills presented as 3D objects with materials</li>
+          <li>Made with React Three Fiber on top of Three.js</li>
+          <li>Deployed on Vercel</li>
           </ul>
         <a class="d-link" href="https://github.com/dikimanu/island-portfolio">View on GitHub</a>
         <a class="d-link" href="https://island-portfolio-delta.vercel.app">Open Live</a>
@@ -236,18 +255,19 @@
         <div class="card-main">
           <span class="card-tag mono">Full Stack Project</span>
           <h3>Food Delivery App</h3>
-          <p class="card-sum">A MERN stack web app where users browse food, add it to a cart and place orders online.</p>
+          <p class="card-sum">A MERN stack web app where users browse food items, add them to a cart and place orders online.</p>
           <div class="chips"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span></div>
           <span class="card-more">View case study</span>
         </div>
         <!-- text shown in the case-study window -->
         <div class="card-detail" hidden>
           <p data-sec="The problem">Ordering food by phone or from scattered menus is slow and easy to get wrong. People want one place to see the menu, pick items and order.</p>
-          <p data-sec="What I built">I built a full stack food delivery app with a React front end and a Node and Express back end, storing data in MongoDB.</p>
+          <p data-sec="What I built">I built a full stack food delivery app with a React front end and a Node.js and Express back end, storing its data in MongoDB.</p>
           <ul data-sec="Key features">
-          <li>Browse the food menu</li>
+          <li>Browse the food menu by item</li>
           <li>Add items to a cart and place an order</li>
-          <li>Full stack MERN architecture</li>
+          <li>REST API built with Node.js and Express, data stored in MongoDB</li>
+          <li>Full stack MERN architecture, deployed online</li>
           </ul>
         <a class="d-link" href="https://github.com/dikimanu/food-delivery">View on GitHub</a>
         <a class="d-link" href="https://food-delivery-sable-one.vercel.app">Open Live</a>
@@ -261,18 +281,19 @@
         <div class="card-main">
           <span class="card-tag mono">Cryptography Project</span>
           <h3>File Encryption & Decryption</h3>
-          <p class="card-sum">A tool that encrypts and decrypts files with AES-GCM authenticated encryption.</p>
+          <p class="card-sum">A tool that encrypts and decrypts files with AES-GCM authenticated encryption, so data stays private and tamper-evident.</p>
           <div class="chips"><span>AES-GCM</span><span>Cryptography</span></div>
           <span class="card-more">View case study</span>
         </div>
         <!-- text shown in the case-study window -->
         <div class="card-detail" hidden>
           <p data-sec="The problem">Files that are stored or shared without protection can be read by anyone who gets them, and plain encryption does not tell you if the data was changed.</p>
-          <p data-sec="What I built">I built a tool that encrypts files with AES-GCM and decrypts them again with the right key. GCM also detects if the encrypted data was tampered with.</p>
+          <p data-sec="What I built">I built a tool that encrypts files with AES-GCM and decrypts them again with the right key. GCM also detects if the encrypted data was tampered with, so a modified file is rejected instead of silently opened.</p>
           <ul data-sec="Key features">
           <li>Encrypts files with AES-GCM</li>
-          <li>Decrypts files with the correct key</li>
-          <li>Detects tampering of encrypted data</li>
+          <li>Decrypts files only with the correct key</li>
+          <li>Detects tampering of encrypted data through authentication</li>
+          <li>Available as an online tool you can try live</li>
           </ul>
                   <a class="d-link" href="https://github.com/dikimanu/file-enc-dec">View on GitHub</a>
         <a class="d-link" href="https://file-enc-dec.vercel.app">Open Live</a>
@@ -286,18 +307,19 @@
         <div class="card-main">
           <span class="card-tag mono">Full Stack Project</span>
           <h3>Social Media App</h3>
-          <p class="card-sum">A MERN stack social media web app where users can sign up, post and interact with others.</p>
+          <p class="card-sum">A MERN stack social media web app where users can sign up, log in, post and interact with others.</p>
           <div class="chips"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span></div>
           <span class="card-more">View case study</span>
         </div>
         <!-- text shown in the case-study window -->
         <div class="card-detail" hidden>
           <p data-sec="The problem">Learning how a social platform really works means building the pieces together: accounts, posts and interaction between users.</p>
-          <p data-sec="What I built">I built a full stack social media app with a React front end and a Node and Express back end, storing data in MongoDB.</p>
+          <p data-sec="What I built">I built a full stack social media app with a React front end and a Node.js and Express back end, storing its data in MongoDB.</p>
           <ul data-sec="Key features">
-          <li>User accounts and login</li>
+          <li>User accounts with sign up and login</li>
           <li>Create and view posts</li>
-          <li>Full stack MERN architecture</li>
+          <li>Interaction between users</li>
+          <li>Full stack MERN architecture, deployed online</li>
           </ul>
         <a class="d-link" href="https://github.com/dikimanu/social-media">View on GitHub</a>
         <a class="d-link" href="https://social-media-web-eta.vercel.app">Open Live</a>
@@ -307,23 +329,24 @@
 
 
        <!-- ===== PROJECT SNAKEGAME: copy from here ... -->
-      <article class="card" tabindex="0" role="button" aria-label="Open case study: Social Media App">
+      <article class="card" tabindex="0" role="button" aria-label="Open case study: Snake Mania">
         <div class="card-shot"><img src="assets/images/snake game.png" alt="snake game screenshot" loading="lazy"></div>
         <div class="card-main">
           <span class="card-tag mono">HTML CSS JS</span>
           <h3>Snake Mania - JS Game</h3>
-          <p class="card-sum">A MERN stack social media web app where users can sign up, post and interact with others.</p>
-          <div class="chips"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span></div>
+          <p class="card-sum">A classic Snake game built with plain HTML, CSS and JavaScript that runs right in the browser.</p>
+          <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
           <span class="card-more">View case study</span>
         </div>
         <!-- text shown in the case-study window -->
         <div class="card-detail" hidden>
-          <p data-sec="The problem">Learning how a social platform really works means building the pieces together: accounts, posts and interaction between users.</p>
-          <p data-sec="What I built">I built a full stack social media app with a React front end and a Node and Express back end, storing data in MongoDB.</p>
+          <p data-sec="The idea">Snake is a simple game, which makes it a great way to practise core programming: game loops, keyboard input, collision checks and score tracking.</p>
+          <p data-sec="What I built">I built a browser version of the classic Snake game using only HTML, CSS and vanilla JavaScript, with no frameworks or libraries.</p>
           <ul data-sec="Key features">
-          <li>User accounts and login</li>
-          <li>Create and view posts</li>
-          <li>Full stack MERN architecture</li>
+          <li>Control the snake with the keyboard and eat food to grow</li>
+          <li>Collision detection with the walls and the snake's own body</li>
+          <li>Score tracking as the snake grows</li>
+          <li>Built with plain HTML, CSS and JavaScript, playable live in the browser</li>
           </ul>
         <a class="d-link" href="https://github.com/dikimanu/javascript-projects/tree/main/snake-game">View on GitHub</a>
         <a class="d-link" href="https://snake-mania-black.vercel.app">Open Live</a>
@@ -358,7 +381,8 @@
           <!-- text shown in the certificate viewer -->
           <span class="cert-detail" hidden>
             <span data-sec="Issued by">Globalsecora</span>
-            <span data-sec="What I learned">Write here...</span>
+            <span data-sec="What I learned">Core cyber security fundamentals: common threats and attacks, how vulnerabilities are found, and the basic ways systems and networks are defended.</span>
+            <span data-sec="Highlights">Built the security foundation that supports my ethical hacking, networking and AI-for-security projects.</span>
           </span>
         </button>
         <!-- ... to here ===== -->
@@ -371,7 +395,8 @@
           <!-- text shown in the certificate viewer -->
           <span class="cert-detail" hidden>
             <span data-sec="Issued by">Amazon Web Services</span>
-            <span data-sec="What I learned">Write here...</span>
+            <span data-sec="What I learned">Cloud computing basics on AWS: core services for compute, storage, databases and networking, plus how the AWS global infrastructure is organised.</span>
+            <span data-sec="Highlights">Learned the shared responsibility model, which explains what AWS secures and what the customer must secure.</span>
           </span>
         </button>
         <!-- ... to here ===== -->
@@ -398,7 +423,8 @@
           <!-- text shown in the certificate viewer -->
           <span class="cert-detail" hidden>
             <span data-sec="Issued by">AI Labs</span>
-            <span data-sec="What I learned">Write here...</span>
+            <span data-sec="What I learned">Linux command line and file system basics, C programming fundamentals, and core data structures and algorithms such as arrays, linked lists, stacks, queues, searching and sorting.</span>
+            <span data-sec="Highlights">Strengthened my problem-solving and low-level programming skills, which help in security and systems work.</span>
           </span>
         </button>
         <!-- ... to here ===== -->
@@ -411,7 +437,8 @@
           <!-- text shown in the certificate viewer -->
           <span class="cert-detail" hidden>
             <span data-sec="Issued by">Infosys</span>
-            <span data-sec="What I learned">Write here...</span>
+            <span data-sec="What I learned">Blockchain fundamentals: distributed ledgers, how blocks are linked using cryptographic hashes, consensus mechanisms, and an introduction to smart contracts.</span>
+            <span data-sec="Highlights">Saw how hashing and decentralisation make data tamper-resistant, and where blockchain is used in real applications.</span>
           </span>
         </button>
         <!-- ... to here ===== -->
@@ -424,7 +451,8 @@
           <!-- text shown in the certificate viewer -->
           <span class="cert-detail" hidden>
             <span data-sec="Issued by">Amazon Web Services</span>
-            <span data-sec="What I learned">Write here...</span>
+            <span data-sec="What I learned">Cloud concepts and the AWS Cloud: core services, security and compliance, and how pricing, billing and support work.</span>
+            <span data-sec="Highlights">Gained a foundation in cloud computing and cloud security that I can build on for deployments and secure architecture.</span>
           </span>
         </button>
         <!-- ... to here ===== -->
@@ -437,7 +465,8 @@
           <!-- text shown in the certificate viewer -->
           <span class="cert-detail" hidden>
             <span data-sec="Issued by">WEBEL</span>
-            <span data-sec="What I learned">Write here...</span>
+            <span data-sec="What I learned">Linux fundamentals: essential commands, file system layout, file permissions, users and processes, and basic shell usage.</span>
+            <span data-sec="Highlights">Became comfortable working in the terminal, which is essential for ethical hacking and security tools.</span>
           </span>
         </button>
         <!-- ... to here ===== -->
@@ -518,6 +547,7 @@
   <script src="js/loader.js"></script>
   <script src="js/background.js"></script>
   <script src="js/orb.js"></script>
+    <script src="js/planets.js"></script>
   <script src="js/cursor.js"></script>
   <script src="js/main.js"></script>
 </body>
