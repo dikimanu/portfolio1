@@ -628,3 +628,11 @@ body.ready .hero > *:nth-child(5) { transition-delay: .65s; }
 }
 /* when the 3D planets run, hide the flat CSS ones */
 .has-planets .section::after { display: none; }
+
+
+/* Hide manual theme switch on mobile */
+@media (max-width: 520px) {
+  .theme-orb {
+    display: none !important;
+  }
+}
