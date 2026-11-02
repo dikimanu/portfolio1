@@ -103,7 +103,7 @@
 
         <!-- Stats -->
         <div class="tile t-stats">
-          <div><img class="ico" src="assets/icons/folder.svg" alt=""><b class="count" data-to="7">0</b><span>Projects</span></div>
+          <div><img class="ico" src="assets/icons/folder.svg" alt=""><b class="count" data-to="9">0</b><span>Projects</span></div>
           <div><img class="ico" src="assets/icons/award.svg" alt=""><b class="count" data-to="7">0</b><span>Certificates</span></div>
           <div><img class="ico" src="assets/icons/graduation-cap.svg" alt=""><b class="count" data-to="3">0</b><span>Years of study</span></div>
         </div>
@@ -170,6 +170,36 @@
     <section class="section" id="projects">
       <h2 class="sec-title">Projects</h2>
       <div class="proj-grid" id="projGrid">
+
+
+      <!-- ===== PROJECT - PDFSEARCH: copy from here ... -->
+      <article class="card" tabindex="0" role="button" aria-label="Open case study: PDF Knowledge Search">
+        <div class="card-shot"><img src="assets/images/pdfsearch.png" alt="PDF Knowledge Search screenshot" loading="lazy"></div>
+        <div class="card-main">
+          <span class="card-tag mono">Desktop app project</span>
+          <h3>PDF Knowledge Search</h3>
+          <p class="card-sum">A free Windows app that searches thousands of PDF pages in seconds and, with an optional Gemini key, answers questions with citations that point to the exact pages.</p>
+          <div class="chips"><span>Python</span><span>SQLite FTS5</span><span>Tkinter</span><span>Gemini AI</span></div>
+          <span class="card-more">View case study</span>
+        </div>
+        <!-- text shown in the case-study window -->
+        <div class="card-detail" hidden>
+          <p data-sec="The problem">Law reports and other large PDF libraries run to thousands of pages. Finding what a judgment says about a topic means opening file after file, and normal PDF viewers cannot search across a whole library or tell you which page answers a question.</p>
+          <p data-sec="What I built">I built a desktop app that reads PDFs into a local search index and finds matching pages instantly, even offline. When a Gemini API key is added, it also turns a question into better search phrases and writes a short answer using only the best-matching pages, with citations that match the numbered sources list. The answer is clearly labelled as found in the documents, related, or not in the documents, so it never passes off general knowledge as coming from the PDFs.</p>
+          <ul data-sec="Key features">
+          <li>Fast full-text search across a whole PDF library using SQLite FTS5 with ranking</li>
+          <li>Works fully offline; AI answers are optional and only short excerpts are sent, never the PDF files</li>
+          <li>Cited answers that only use the retrieved pages, with a clear label when the documents do not answer</li>
+          <li>Opens the original PDF at the exact page, with your search words highlighted in the page preview</li>
+          <li>Skips duplicate PDFs, resumes interrupted indexing and filters by folder</li>
+          <li>Packaged as a Windows installer using PyInstaller and Inno Setup</li>
+          </ul>
+          <p data-sec="Limitations">It works on Windows only and cannot read scanned PDFs without a text layer, because it has no OCR. Search is keyword based, so the AI only reads the best-matching pages, and its answers should always be checked against the original page.</p>
+        <a class="d-link" href="https://github.com/dikimanu/pdfSearch">View on GitHub</a>
+<a class="d-link" href="https://github.com/dikimanu/pdfSearch/raw/main/installer_output">Download installer</a>
+        </div>
+      </article>
+      <!-- ... to here (paste the copy right after this line) ===== -->
 
       <!-- ===== PROJECT - PASSWORD: copy from here ... -->
       <article class="card" tabindex="0" role="button" aria-label="Open case study: AI Password Attack Detector and Protector">
@@ -553,3 +583,7 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
+
+
+<!-- index.html -->
