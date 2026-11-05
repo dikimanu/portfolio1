@@ -172,6 +172,34 @@
       <div class="proj-grid" id="projGrid">
 
 
+        <!-- ===== PROJECT - QUICKAI: copy from here ... -->
+      <article class="card" tabindex="0" role="button" aria-label="Open case study: QuickAI">
+        <div class="card-shot"><img src="assets/images/quickai.png" alt="QuickAI screenshot" loading="lazy"></div>
+        <div class="card-main">
+          <span class="card-tag mono">Web app project</span>
+          <h3>QuickAI</h3>
+          <p class="card-sum">A free website with 12 AI tools in one place, including chat, image generation, exam answers, quizzes, translation and code help, with answers that stream in as they are written and no sign-up needed.</p>
+          <div class="chips"><span>Next.js</span><span>TypeScript</span><span>Tailwind CSS</span><span>Gemini AI</span></div>
+          <span class="card-more">View case study</span>
+        </div>
+        <!-- text shown in the case-study window -->
+        <div class="card-detail" hidden>
+          <p data-sec="The problem">Students and professionals use AI for many small jobs, such as explaining a topic, fixing grammar, translating or planning study time, and each job usually means a different website, a sign-up and a different layout. Free AI services are also limited and can be busy or overloaded when many people use them.</p>
+          <p data-sec="What I built">I built a web app that puts 12 AI tools behind one sidebar. Each tool is defined in a single file with its own instructions, so adding a new tool is quick. The server builds every prompt itself, so visitors cannot inject their own instructions. Text tools use the Gemini API and stream the answer word by word. If Gemini is busy, the app retries and switches to backup models automatically. Images are made by a free image service, with Hugging Face as an emergency backup. Rate limits and a short-term cache protect the free quota.</p>
+          <ul data-sec="Key features">
+          <li>12 tools: AI chat, image generator, image Q&amp;A, exam answer writer, quiz and flashcards, summarizer, study planner, paraphraser, translator, writing assistant, code helper, and resume and cover letter</li>
+          <li>Streaming answers that appear word by word, with a Stop button and a Generate again button</li>
+          <li>Automatic retry and backup models when the main AI model is busy</li>
+          <li>Per-visitor and site-wide rate limits plus input checks to protect the free quota</li>
+          <li>History, chat memory and recent images saved only in the visitor's own browser, with no accounts</li>
+          <li>Dark and light themes, a Ctrl+K search for tools, and a mobile-friendly layout</li>
+          </ul>
+        <a class="d-link" href="https://github.com/dikimanu/QuickAI">View on GitHub</a>
+<a class="d-link" href="https://quick-ai777.vercel.app/">Open live site</a>
+        </div>
+      </article>
+      <!-- ... to here (paste the copy right after this line) ===== --> 
+
       <!-- ===== PROJECT - PDFSEARCH: copy from here ... -->
       <article class="card" tabindex="0" role="button" aria-label="Open case study: PDF Knowledge Search">
         <div class="card-shot"><img src="assets/images/pdfsearch.png" alt="PDF Knowledge Search screenshot" loading="lazy"></div>
@@ -586,4 +614,4 @@
 
 
 
-<!-- index.html -->
+<!-- python -m http.server 3000 -->
