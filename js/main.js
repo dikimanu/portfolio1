@@ -86,7 +86,7 @@ function limitRows(grid, step) {
 var TERMINAL = {
   whoami:   'Satyabrata Pal\nB.Tech CSE, Cyber Security student\n"Doing work for passion, not for greed of results."',
   skills:   'CSE Core Subjects: Operating System, DSA, DBMS, Networking\nSecurity : Basics of Ethical Hacking, Fundamentals of Cyber Security, Cryptography\nAI: Introduction to AI&ML, Data Mining and Data Visualization\nCode     : Python, C, SQL\nTools    : Linux, Git, ChatGPT, Claude, Gemini, and other AI models...',
-  projects: '1. AI Password Attack Detector and Protector\n2. PortScanner\n3. YourStore E-Commerce Platform\n4. File Encryption & Decryption (AES-GCM)\n5. Social Media App (MERN stack)\n6. 3d Island Portfolio\n7. Snake Mania (JS Game)\n8. PDF Knowledge Search\n9. Quick AI',
+  projects: '1. AI Password Attack Detector and Protector\n2. PortScanner\n3. YourStore E-Commerce Platform\n4. File Encryption & Decryption (AES-GCM)\n5. Social Media App (MERN stack)\n6. 3d Island Portfolio\n7. Cat Quest - Browser Adventure Game\n8. PDF Knowledge Search\n9. Quick AI',
   contact:  'email   : satyabratapal50@gmail.com\nlinkedin: linkedin.com/in/satyabrata-pal-03b5a7373'
 };
 
