@@ -103,7 +103,7 @@
 
         <!-- Stats -->
         <div class="tile t-stats">
-          <div><img class="ico" src="assets/icons/folder.svg" alt=""><b class="count" data-to="9">0</b><span>Projects</span></div>
+          <div><img class="ico" src="assets/icons/folder.svg" alt=""><b class="count" data-to="10">0</b><span>Projects</span></div>
           <div><img class="ico" src="assets/icons/award.svg" alt=""><b class="count" data-to="7">0</b><span>Certificates</span></div>
           <div><img class="ico" src="assets/icons/graduation-cap.svg" alt=""><b class="count" data-to="3">0</b><span>Years of study</span></div>
         </div>
@@ -171,6 +171,35 @@
       <h2 class="sec-title">Projects</h2>
       <div class="proj-grid" id="projGrid">
 
+
+        <!-- ===== PROJECT - QUIZ BATTLE: copy from here ... -->
+      <article class="card" tabindex="0" role="button" aria-label="Open case study: Quiz Battle">
+        <div class="card-shot"><img src="assets/images/quizbattle.png" alt="Quiz Battle screenshot" loading="lazy"></div>
+        <div class="card-main">
+          <span class="card-tag mono">Web app project</span>
+          <h3>Quiz Battle</h3>
+          <p class="card-sum">A live multiplayer quiz game for up to 10 friends, played in the browser with just a match link. It has three rounds, Buzzer, Timer and Negative Marking, and can build a quiz from a category or from an uploaded PDF or Word file.</p>
+          <div class="chips"><span>Node.js</span><span>Express</span><span>Socket.IO</span><span>Gemini AI</span></div>
+          <span class="card-more">View case study</span>
+        </div>
+        <!-- text shown in the case-study window -->
+        <div class="card-detail" hidden>
+          <p data-sec="The problem">Group quiz games are usually either a TV-style show you cannot play with friends, or an app that needs an install and a sign-up. I wanted a KBC-style quiz that works from a single link on any phone or laptop, and that stays fair when many people answer at the same moment.</p>
+          <p data-sec="What I built">I built a real-time quiz game with a Node.js and Socket.IO server and a plain HTML, CSS and JavaScript front end. The server runs everything, including the timers, the scoring and the answers, so nobody can cheat with their own clock, and correct answers are only sent after each question closes. The match is split into three rounds. In Buzzer the first player to answer stops the question, and a wrong answer locks you out while the question reopens for others. In Timer everyone answers together and faster correct answers earn more points. In Negative Marking wrong answers cost points, and a Skip button lets players choose not to risk it. The host can pick categories from my own question bank and Open Trivia DB, or upload a PDF or DOCX, where the Gemini AI writes the questions and the host can review and delete bad ones before the game starts. If one Gemini model is busy, the server retries and switches to backup models. The server is deployed on Render and updates automatically when I push code to GitHub.</p>
+          <ul data-sec="Key features">
+          <li>Join with a match ID or shareable link and just a nickname, with no sign-up, for up to 10 players per room</li>
+          <li>Three rounds (Buzzer, Timer, Negative Marking) with 10, 30 or 50 questions per match</li>
+          <li>Category quizzes, or document quizzes made from an uploaded PDF or DOCX with a host preview</li>
+          <li>Server-side timing, scoring and answers for fairness, with live leaderboards and a final podium with personal stats</li>
+          <li>Host controls, automatic host handover, player removal and reconnecting within 30 seconds without losing the score</li>
+          <li>Upload limits, rate limits and nickname filtering, with files kept in memory only and never saved</li>
+          <li>Sound effects with a mute button and a mobile-friendly layout</li>
+          </ul>
+        <a class="d-link" href="https://github.com/dikimanu/Quiz-Battle">View on GitHub</a>
+<a class="d-link" href="https://quiz-battle-ci89.onrender.com">Open live site</a>
+        </div>
+      </article>
+      <!-- ... to here (paste the copy right after this line) ===== -->
 
         <!-- ===== PROJECT - QUICKAI: copy from here ... -->
       <article class="card" tabindex="0" role="button" aria-label="Open case study: QuickAI">
