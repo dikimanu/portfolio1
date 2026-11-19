@@ -1078,3 +1078,33 @@ html[data-planet="moon"]    { --f1: #d3dbee; --f2: #8f9bc0; --f3: #6679ad; }  /*
   --h2: #8f9bc0;
   --h3: #6679ad;
 }
+
+
+/*  */
+/* ===== PERFORMANCE STEP 1: no backdrop blur ===== */
+.nav, .status, .btn, .tile, .card, .radar-wrap, .ct-form {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* make the panels a bit more solid to make up for the lost blur */
+:root { --deep: rgba(5, 8, 20, .86); }
+.nav { background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.03) 60%), rgba(8, 12, 28, .85); }
+.status { background: rgba(8, 12, 28, .8); }
+
+/* ===== PERFORMANCE STEP 2: no endless repaint animations ===== */
+.card::after { animation: none !important; background-position: 50% 0 !important; }
+.btn::before { animation: none !important; }
+h1 .row { animation: none !important; }
+#contact::before { animation: none !important; }
+
+/* cards: the light only travels while you hover */
+.card:hover::after { animation: border-flow 4s linear infinite !important; }
+
+/* buttons: the wave only moves while you hover */
+.btn:hover::before { animation: wave 2.4s linear infinite !important; }
+
+/* cheaper shadow on the name */
+h1 .row {
+  filter: drop-shadow(0 12px 20px rgba(var(--a), .22)) !important;
+}
